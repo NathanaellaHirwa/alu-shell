@@ -1,2 +1,2 @@
 #!/bin/bash
-echo root/alu-shell/basics
+echo /root/alu-shell/basics
