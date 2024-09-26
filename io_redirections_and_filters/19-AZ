@@ -1,2 +1,2 @@
 #!/bin/bash
-Tr 'Ac' 'Ze'
+echo "Alice and cat" | tr 'Ac' 'Ze'
