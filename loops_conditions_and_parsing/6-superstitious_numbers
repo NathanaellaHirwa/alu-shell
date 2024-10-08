@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # Script to display numbers from 1 to 20 with specific messages for certain numbers
 
 count=1
