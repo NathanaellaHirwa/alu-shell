@@ -13,4 +13,14 @@ do
         fi
     fi
 done
-
+for pid in /proc/[0-9]*; do
+    # Check if the directory exists
+    if [[ -d "$pid" ]]; then
+        # Read the process name from the cmdline file
+        cmdline=$(tr '\0' ' ' < "$pid/cmdline")
+        # Check if the command line contains "bash"
+        if [[ "$cmdline" == *bash* ]]; then
+            echo "PID: ${pid##*/}, Process Name: ${cmdline%% *}"  # Only show the command without args
+        fi
+    fi
+done
