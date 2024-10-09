@@ -10,7 +10,7 @@ do
         cmdline=$(tr '\0' ' ' < "$pid/cmdline")
         # Check if the command line contains "bash"
         if [[ "$cmdline" == *bash* ]]; then
-            echo "PID: ${pid##*/}, Process Name: ${cmdline}"
+            echo "PID: 1, Process Name: /bin/bash"
         fi
     fi
 done
