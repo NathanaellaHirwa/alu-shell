@@ -5,12 +5,11 @@
 for pid in /proc/[0-9]*; do
     # Check if the directory exists
     if [[ -d "$pid" ]]; then
-        # Read the process name from the status file
-        process_name=$(basename "$pid")
+        # Read the process name from the cmdline file
         cmdline=$(tr '\0' ' ' < "$pid/cmdline")
-        # Check if the process name contains "bash"
+        # Check if the command line contains "bash"
         if [[ "$cmdline" == *bash* ]]; then
-            echo "PID: ${process_name}, Process Name: ${cmdline}"
+            echo "PID: ${pid##*/}, Process Name: ${cmdline}"
         fi
     fi
 done
