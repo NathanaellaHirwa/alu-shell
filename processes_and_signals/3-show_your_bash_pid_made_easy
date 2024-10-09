@@ -2,7 +2,8 @@
 # Script to display PID and process name of processes containing the word "bash"
 
 # shellcheck disable=SC2009
-for pid in /proc/[0-9]*; do
+for pid in /proc/[0-9]*; 
+do
     # Check if the directory exists
     if [[ -d "$pid" ]]; then
         # Read the process name from the cmdline file
