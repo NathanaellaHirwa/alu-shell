@@ -3,7 +3,7 @@
 
 for item in *; do
   if [[ $item == -* ]]; then
-    echo "${item#*-}"
+    echo "ls $item "
   fi
 done
 
