@@ -28,7 +28,7 @@ stop_process() {
 restart_process() {
     stop_process
     start_process
-    echo "manage_my_process restarted"
+    printf "%-80s\n" "manage_my_process restarted"
 }
 
 # Main logic to handle arguments
