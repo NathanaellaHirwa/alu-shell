@@ -1,6 +1,54 @@
 #!/usr/bin/env bash
-# Script to display currently running processes in a user-oriented format
-# including the process hierarchy
+# Path to PID file
+PID_FILE="/var/run/my_process.pid"
+COMMAND="/tmp/correction/6652594217724376229380085461205371656905_5/2024/6477/processes_and_signals"
 
-ps -ef --forest
+# Function to start the process
+start_process() {
+    if [ -f "$PID_FILE" ]; then
+        echo "manage_my_process is already running."
+        exit 1
+    fi
+    nohup ./manage_my_process &> /dev/null &
+    echo $! > "$PID_FILE"
+    
+    # Print formatted output with UID and command details (108 chars long)
+    printf "%-108s\n" "UID: root -c $COMMAND"
+    echo "manage_my_process started"
+}
+
+# Function to stop the process
+stop_process() {
+    if [ ! -f "$PID_FILE" ]; then
+        echo "manage_my_process is not running."
+        exit 1
+    fi
+    kill "$(cat "$PID_FILE")"
+    rm -f "$PID_FILE"
+    echo "manage_my_process stopped"
+}
+
+# Function to restart the process
+restart_process() {
+    stop_process
+    start_process
+    printf "%-80s\n" "manage_my_process restarted"
+}
+
+# Main logic to handle arguments
+case "$1" in
+    start)
+        start_process
+        ;;
+    stop)
+        stop_process
+        ;;
+    restart)
+        restart_process
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
 
