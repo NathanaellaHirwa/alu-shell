@@ -1,1 +1,1 @@
-This repository contains shell scripts for various tasks.
+echo "This repository contains shell scripts for various tasks."
