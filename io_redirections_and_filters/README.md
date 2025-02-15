@@ -1,1 +1,1 @@
-echo "heyyyyyyyyy"
+echo "heyyyyy"
